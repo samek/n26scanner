@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/scan"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/scan" />
+
+    <item
+        android:id="@+id/bankInfo"
+        android:icon="@drawable/ic_info"
+        android:title="Info" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
+
+
+</menu>

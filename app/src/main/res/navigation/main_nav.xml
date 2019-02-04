@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="si.root.n26scanner.Fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settings_to_bankInfo"
+            app:destination="@id/bankInfo"
+            app:popUpTo="@+id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/qrCodeReader"
+        android:name="si.root.n26scanner.Fragments.QrCodeReaderFragment"
+        android:label="fragment_qr_code_reader"
+        tools:layout="@layout/fragment_qr_code_reader" >
+        <action
+            android:id="@+id/action_qrCodeReader_to_paymentConfirmationFragment"
+            app:destination="@id/paymentConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/home2"
+        android:name="si.root.n26scanner.Fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_qrCodeReader"
+            app:destination="@id/qrCodeReader" />
+        <action
+            android:id="@+id/action_home2_to_Settings"
+            app:destination="@+id/settings" />
+        <action
+            android:id="@+id/action_home2_to_bankInfo"
+            app:destination="@id/bankInfo"
+            app:popUpTo="@+id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/bankInfo"
+        android:name="si.root.n26scanner.Fragments.BankInfoFragment"
+        android:label="fragment_bank_info"
+        tools:layout="@layout/fragment_bank_info" />
+    <fragment
+        android:id="@+id/paymentConfirmationFragment"
+        android:name="si.root.n26scanner.Fragments.PaymentConfirmationFragment"
+        android:label="fragment_payment_confirmation"
+        tools:layout="@layout/fragment_payment_confirmation" >
+        <argument
+            android:name="amount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="iban"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="reference"
+            app:argType="string" />
+    </fragment>
+</navigation>

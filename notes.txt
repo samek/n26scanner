@@ -1,0 +1,56 @@
+UPNQR
+
+
+
+
+   ROOT, D.O.O.
+   Cesta v Bevče 10
+   SI-3320 VELENJE
+   00000009898
+
+
+   OTHR
+   Plačilo opomina št. 1906400001459
+   05.02.2019
+   SI56051008013558749
+   SI121906400014594
+   T-2 d.o.o.
+   Verovškova ulica 64a
+   1000 Ljubljana
+   205
+   , listener: BarcodeReaderFragment{6981a54 (57abb335-e9af-4cc1-979f-bc7292adc821) id=0x7f08004b}
+
+ammount = 8
+bic =""
+iban = 14
+name = 16 + 17 + 18
+reference = 15
+
+$ar = $_GET["q"];
+$ar = explode("\n",$ar);
+if ($ar[0]!="UPNQR") die("Wrong data");
+include("n26.php");
+$n26 = new Number26('vas.cenjeni@email.naslov.com', 'VAŠEGESLO');
+$amount = floatval($ar[8])/100;
+$out = $n26->makeTransfer(
+$amount,
+ '0000',
+  '',
+  $ar[14],
+   $ar[16]." ".$ar[17]." ".$ar[18],
+   $ar[15]);
+if ($out->id) echo "Confirm in your mobile app";
+else echo "Probably some error."
+
+public function makeTransfer($amount, $pin, $bic, $iban, $name, $reference)
+   {
+       $content = [
+           'pin' => $pin,
+           'transaction' => [
+               'partnerBic' => $bic,
+               'amount' => $amount,
+               'type' => 'DT',
+               'partnerIban' => $iban,
+               'partnerName' => $name,
+               'referenceText' => $reference
+       ]];
