@@ -1,4 +1,8 @@
 # n26scanner
+
+
+**N26 switched to graphql so this project doesn't work anymore !!!**
+
 Scan QR code (Slovenian) and make a n26 payment
 
 Have a look at the code, install if you wish. 
